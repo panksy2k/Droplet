@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/headTag :: headTag">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Data drop registration</title>
+
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/2.3.0/css/bootstrap.min.css}" rel="stylesheet" />
+    <link href="../../resources/static/css/media.css" th:href="@{/css/media.css}" rel="stylesheet" />
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"
+            th:src="@{/webjars/jquery/1.9.0/jquery.js}"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"
+            th:src="@{/webjars/jquery-ui/1.9.2/js/jquery-ui-1.9.2.custom.js}"></script>
+
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/smoothness/jquery-ui.css"
+          th:href="@{/webjars/jquery-ui/1.9.2/css/smoothness/jquery-ui-1.9.2.custom.css}" rel="stylesheet" />
+</head>
+
+<body class="container">
+    <div th:include="fragments/bodyHeader" th:remove="tag">
+        <img th:src="@{/resources/static/images/banner-graphic.png}"
+             src="/resources/static/images/banner-graphic.png"/>
+    </div>
+
+    <form th:object="${ddUser}" th:action="@{/account/register}" method="post" class="form-horizontal">
+        <ul>
+            <li th:each="err : ${#fields.errors('*')}" th:text="${err}" />
+        </ul>
+
+        <div class="control-group" th:classappend="${#fields.hasErrors('firstName')} ? error">
+            <label class="control-label">First Name</label>
+            <div class="controls">
+                <input type="text" th:field="*{firstName}" />
+                <span class="help-inline" th:errors="*{firstName}">[error]</span>
+            </div>
+        </div>
+
+        <div class="control-group" th:classappend="${#fields.hasErrors('lastName')} ? error">
+            <label class="control-label">Last Name</label>
+            <div class="controls">
+                <input type="text" th:field="*{lastName}" />
+                <span class="help-inline" th:errors="*{lastName}">[error]</span>
+            </div>
+        </div>
+
+        <div class="control-group" th:classappend="${#fields.hasErrors('userNameEmail')} ? error">
+            <label class="control-label">Email address</label>
+            <div class="controls">
+                <input type="text" th:field="*{userNameEmail}" />
+                <span class="help-inline" th:errors="*{userNameEmail}">[error]</span>
+            </div>
+        </div>
+
+        <div class="control-group" th:classappend="${#fields.hasErrors('userPassword')} ? error">
+            <label class="control-label">Password</label>
+            <div class="controls">
+                <input type="password" th:field="*{userPassword}" />
+                <span class="help-inline" th:errors="*{userPassword}">[error]</span>
+            </div>
+        </div>
+
+        <p>
+        <input th:type="submit" th:value="Submit"/>
+        </p>
+
+        <ul>
+            <li th:each="err : ${#fields.errors('*')}" th:text="${err}" />
+        </ul>
+    </form>
+</body>
+</html>

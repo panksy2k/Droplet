@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/headTag :: headTag">
+    <title>Media Management :: a place where you can store / access your contents in a secure and an easy
+        manner.</title>
+</head>
+
+<body>
+<div class="container">
+    <div th:include="fragments/bodyHeader" th:remove="tag">
+        <img th:src="@{/images/banner-graphic.png}" src="../../resources/static/images/banner-graphic.png"/>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Welcome</h2>
+
+            <p>
+                Data drop is one stop place where you can store all your data such as images, documents and other media
+                formats
+                whilst accessing and managing them in an easy and secure manner.
+            </p>
+            <p>
+                Click <a th:href="@{/account/registration/form}">here</a> to sign-up for a 30 day trial or look at the <a
+                    th:href="@{/templates/dropContent.html}">subscription</a> page for more options!
+            </p>
+        </div>
+    </div>
+   <div th:include="fragments/footer" th:remove="tag">
+   </div>
+</div>
+</body>
+</html>
