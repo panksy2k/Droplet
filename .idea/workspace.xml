@@ -2,15 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55ac7eb5-63aa-4003-8ec0-9f35aa7df250" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/pardasani/digital/dto/DocumentMetaData.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logFile.2016-03-05.log" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pardasani/digital/business/DocumentManagementService.java" afterPath="$PROJECT_DIR$/src/main/java/com/pardasani/digital/business/DocumentManagementService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pardasani/digital/business/implementation/DocumentManagementServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/pardasani/digital/business/implementation/DocumentManagementServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pardasani/digital/controller/DocumentManagementController.java" afterPath="$PROJECT_DIR$/src/main/java/com/pardasani/digital/controller/DocumentManagementController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pardasani/digital/dto/APIOptions.java" afterPath="$PROJECT_DIR$/src/main/java/com/pardasani/digital/dto/APIOptions.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pardasani/digital/repository/DocumentStoreRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/pardasani/digital/repository/DocumentStoreRepository.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/dropContent.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/dropContent.html" />
     </list>
     <ignored path="media-management.iws" />
@@ -38,7 +29,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/dropContent.html">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.73260075">
-              <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+              <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -1162,7 +1153,7 @@
       <workItem from="1457269592428" duration="1558000" />
       <workItem from="1457644820456" duration="6763000" />
       <workItem from="1457811442289" duration="10572000" />
-      <workItem from="1457991441978" duration="5927000" />
+      <workItem from="1457991441978" duration="6024000" />
     </task>
     <task id="LOCAL-00001" summary="added repository tier to persist / fetch account data">
       <created>1456596139757</created>
@@ -1204,7 +1195,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105623000" />
+    <option name="totallyTimeSpent" value="105720000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="989" extended-state="6" />
@@ -1763,7 +1754,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/dropContent.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.73260075">
-          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
           <folding />
         </state>
       </provider>
