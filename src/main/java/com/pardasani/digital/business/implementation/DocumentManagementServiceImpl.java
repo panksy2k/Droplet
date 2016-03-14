@@ -1,6 +1,7 @@
 package com.pardasani.digital.business.implementation;
 
 import com.google.common.collect.ImmutableMap;
+import com.mongodb.gridfs.GridFSDBFile;
 import com.mongodb.gridfs.GridFSFile;
 import com.pardasani.digital.business.DocumentManagementService;
 import com.pardasani.digital.dto.APIOptions;
@@ -27,7 +28,7 @@ public class DocumentManagementServiceImpl implements DocumentManagementService 
     public Object addNewDocument(MultipartFile file) {
         try {
             APIOptions options = new APIOptions.APIOptionsBuilder().withDocumentStream(file.getInputStream())
-                    .withDocumentFileName(file.getName()).withDocumentType(MediaType.parseMediaType(file.getContentType()))
+                    .withDocumentFileName(file.getOriginalFilename()).withDocumentType(file.getContentType())
                     .withDocumentMetaData(ImmutableMap.<String, Long>of("length", file.getSize()))
                     .build();
 
@@ -38,8 +39,9 @@ public class DocumentManagementServiceImpl implements DocumentManagementService 
     }
 
     @Override
-    public GridFSFile getDocument(Long documentId) {
-        return null;
+    public GridFSDBFile getDocumentFile(Object documentId) {
+        APIOptions options = new APIOptions.APIOptionsBuilder().withDocumentId(documentId).build();
+        return dmsRepository.getDocumentById(options);
     }
 
     @Override

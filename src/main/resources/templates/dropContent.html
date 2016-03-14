@@ -25,16 +25,18 @@
 </div>
 
 <form th:method="POST" enctype="multipart/form-data" th:action="@{/document/create}">
-    <table>
-        <tr>
-            <td>File to upload:</td>
-            <td><input th:type="file" th:name="file"/></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><input th:type="submit" th:value="Upload"/></td>
-        </tr>
-    </table>
+    <div class="row">
+        <div class="col-xs-6 col-md-4">
+            <label th:for="file">File upload</label>
+        </div>
+        <div class="col-xs-6 col-md-4">
+            <input th:type="file" th:name="file"/>
+        </div>
+        <div class="col-xs-6 col-md-4">
+            <input class="btn btn-primary" th:type="submit" th:value="Submit"/>
+        </div>
+    </div>
+    <p class="help-block">Please upload the document that you want to store!</p>
 </form>
 
 </body>

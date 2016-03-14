@@ -1,6 +1,6 @@
 # exclude everything except directory foo/bar
-#folders to exclude
+# folders to exclude
 target/
 
 # files to exclude
-.iml
+*.iml

@@ -13,12 +13,14 @@ public class APIOptions<T> {
     private String fileName;
     private String documentType;
     private InputStream documentStream;
+    private Object documentId;
 
     public APIOptions(APIOptionsBuilder builder) {
         this.documentMetaData = builder.documentMetaData;
         this.fileName = builder.fileName;
         this.documentType = builder.documentType;
         this.documentStream = builder.documentStream;
+        this.documentId = builder.fileObjectId;
     }
 
     public Map<String, T> getDocumentMetaData() {
@@ -37,11 +39,21 @@ public class APIOptions<T> {
         return documentStream;
     }
 
+    public Object getDocumentId() {
+        return documentId;
+    }
+
     public static class APIOptionsBuilder <T> {
         private Map<String, T> documentMetaData;
         private String fileName;
         private String documentType;
         private InputStream documentStream;
+        private Object fileObjectId;
+
+        public APIOptionsBuilder withDocumentId(Object id) {
+            this.fileObjectId = id;
+            return this;
+        }
 
         public APIOptionsBuilder withDocumentMetaData(Map<String, T> metaDataMap) {
             this.documentMetaData = metaDataMap;
@@ -53,8 +65,8 @@ public class APIOptions<T> {
             return this;
         }
 
-        public APIOptionsBuilder withDocumentType(MediaType documentType) {
-            this.documentType = documentType.getType();
+        public APIOptionsBuilder withDocumentType(String documentType) {
+            this.documentType = documentType;
             return this;
         }
 
