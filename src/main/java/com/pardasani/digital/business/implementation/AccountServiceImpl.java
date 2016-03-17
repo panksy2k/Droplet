@@ -1,7 +1,7 @@
 package com.pardasani.digital.business.implementation;
 
 import com.pardasani.digital.business.AccountService;
-import com.pardasani.digital.domain.Account;
+import com.pardasani.digital.domain.DropletUser;
 import com.pardasani.digital.exception.MediaManagementException;
 import com.pardasani.digital.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,21 +16,21 @@ public class AccountServiceImpl implements AccountService {
     private AccountRepository accountRepository;
 
     @Override
-    public Integer registerUserAccountDetails(Account account) {
-        Account existingAccount = accountRepository.findByUserNameEmail(account.getUserNameEmail());
-        if(null != existingAccount) throw new MediaManagementException("Account / Email is already registered");
+    public Integer registerUserAccountDetails(DropletUser dropletUser) {
+        DropletUser existingDropletUser = accountRepository.findByUserNameEmail(dropletUser.getUserNameEmail());
+        if(null != existingDropletUser) throw new MediaManagementException("DropletUser / Email is already registered");
 
-        existingAccount = accountRepository.save(account);
-        return existingAccount.getId();
+        existingDropletUser = accountRepository.save(dropletUser);
+        return existingDropletUser.getId();
     }
 
     @Override
-    public Account changeAccountRegistrationDetails(Account oldAccount) {
-        return accountRepository.updateAccount(oldAccount);
+    public DropletUser changeAccountRegistrationDetails(DropletUser oldDropletUser) {
+        return accountRepository.updateAccount(oldDropletUser);
     }
 
     @Override
-    public List<Account> findAllAccounts() {
+    public List<DropletUser> findAllAccounts() {
         return accountRepository.findAllAccounts();
     }
 

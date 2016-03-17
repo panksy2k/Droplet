@@ -6,6 +6,7 @@ import com.pardasani.digital.dto.APIOptions;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.net.URL;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ import java.util.List;
 
 @Service("dms")
 public interface DocumentManagementService {
-    Object addNewDocument(MultipartFile file);
+    URL addNewDocument(APIOptions apiOptions);
     GridFSDBFile getDocumentFile(Object documentId);
     List<GridFSFile> getDocumentList(APIOptions fileOptions);
     Long updateDocument(APIOptions fileOptions);

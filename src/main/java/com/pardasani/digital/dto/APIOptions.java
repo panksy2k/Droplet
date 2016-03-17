@@ -1,6 +1,6 @@
 package com.pardasani.digital.dto;
 
-import org.springframework.http.MediaType;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.InputStream;
 import java.util.Map;
@@ -13,7 +13,9 @@ public class APIOptions<T> {
     private String fileName;
     private String documentType;
     private InputStream documentStream;
+    private MultipartFile documentFile;
     private Object documentId;
+    private String userEmailAddress;
 
     public APIOptions(APIOptionsBuilder builder) {
         this.documentMetaData = builder.documentMetaData;
@@ -21,6 +23,8 @@ public class APIOptions<T> {
         this.documentType = builder.documentType;
         this.documentStream = builder.documentStream;
         this.documentId = builder.fileObjectId;
+        this.documentFile = builder.documentFile;
+        this.userEmailAddress = builder.userEmailId;
     }
 
     public Map<String, T> getDocumentMetaData() {
@@ -43,12 +47,22 @@ public class APIOptions<T> {
         return documentId;
     }
 
+    public MultipartFile getDocumentFile() {
+        return documentFile;
+    }
+
+    public String getUserEmailAddress() {
+        return userEmailAddress;
+    }
+
     public static class APIOptionsBuilder <T> {
         private Map<String, T> documentMetaData;
         private String fileName;
         private String documentType;
         private InputStream documentStream;
         private Object fileObjectId;
+        private MultipartFile documentFile;
+        private String userEmailId;
 
         public APIOptionsBuilder withDocumentId(Object id) {
             this.fileObjectId = id;
@@ -72,6 +86,16 @@ public class APIOptions<T> {
 
         public APIOptionsBuilder withDocumentStream(InputStream stream) {
             this.documentStream = stream;
+            return this;
+        }
+
+        public APIOptionsBuilder withMultipartFile(MultipartFile document) {
+            this.documentFile = document;
+            return this;
+        }
+
+        public APIOptionsBuilder withUserEmail(String userEmail) {
+            this.userEmailId = userEmail;
             return this;
         }
 

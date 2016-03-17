@@ -1,7 +1,7 @@
 package com.pardasani.digital.controller;
 
 import com.pardasani.digital.business.AccountService;
-import com.pardasani.digital.domain.Account;
+import com.pardasani.digital.domain.DropletUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,12 +21,12 @@ public class TimepassController {
     private AccountService accountService;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json")
-    public List<Account> findAllAccounts() {
+    public List<DropletUser> findAllAccounts() {
         return accountService.findAllAccounts();
     }
 
     @RequestMapping(value = "/register/amend", method = RequestMethod.POST)
-    public void changeAccountRegistration(@RequestBody Account userAccount) {
-        accountService.changeAccountRegistrationDetails(userAccount);
+    public void changeAccountRegistration(@RequestBody DropletUser userDropletUser) {
+        accountService.changeAccountRegistrationDetails(userDropletUser);
     }
 }

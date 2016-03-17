@@ -1,5 +1,6 @@
 package com.pardasani.digital.domain;
 
+import org.bson.types.ObjectId;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
@@ -7,13 +8,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * Created by pankajpardasani on 15/02/2016.
  */
 
 @Document
-public class Account {
+public class DropletUser {
     @Id
     private int id;
 
@@ -32,6 +34,14 @@ public class Account {
     private LocalDateTime creationDate;
 
     private boolean agreeToTermsAndConditions;
+
+    private List<Object> dropFiles;
+
+    public DropletUser(){}
+
+    public DropletUser(String userNameEmail) {
+        this.userNameEmail = userNameEmail;
+    }
 
     public int getId() {
         return id;
@@ -87,5 +97,13 @@ public class Account {
 
     public void setAgreeToTermsAndConditions(boolean agreeToTermsAndConditions) {
         this.agreeToTermsAndConditions = agreeToTermsAndConditions;
+    }
+
+    public List<Object> getDropFiles() {
+        return dropFiles;
+    }
+
+    public void setDropFiles(List<Object> dropFiles) {
+        this.dropFiles = dropFiles;
     }
 }

@@ -1,6 +1,6 @@
 package com.pardasani.digital.repository;
 
-import com.pardasani.digital.domain.Account;
+import com.pardasani.digital.domain.DropletUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -27,26 +27,26 @@ public class AccountRepository {
         this.operations = operations;
     }
 
-    public Account updateAccount(Account changedAccount) {
+    public DropletUser updateAccount(DropletUser changedDropletUser) {
         return operations.findAndModify(
-                query(where("userNameEmail").is(changedAccount.getUserNameEmail())),
-                update("firstName", changedAccount.getFirstName())
-                        .set("lastName", changedAccount.getLastName())
-                        .set("userPassword", changedAccount.getUserPassword()),
-                new FindAndModifyOptions().returnNew(true), Account.class);
+                query(where("userNameEmail").is(changedDropletUser.getUserNameEmail())),
+                update("firstName", changedDropletUser.getFirstName())
+                        .set("lastName", changedDropletUser.getLastName())
+                        .set("userPassword", changedDropletUser.getUserPassword()),
+                new FindAndModifyOptions().returnNew(true), DropletUser.class);
     }
 
-    public Account findByUserNameEmail(String userNameEmail) {
-        return operations.findOne(query(where("userNameEmail").is(userNameEmail)), Account.class);
+    public DropletUser findByUserNameEmail(String userNameEmail) {
+        return operations.findOne(query(where("userNameEmail").is(userNameEmail.toLowerCase())), DropletUser.class);
     }
 
-    public Account save(Account account) {
-        this.operations.save(account);
-        return findByUserNameEmail(account.getUserNameEmail());
+    public DropletUser save(DropletUser dropletUser) {
+        this.operations.save(dropletUser);
+        return findByUserNameEmail(dropletUser.getUserNameEmail().toLowerCase());
     }
 
-    public List<Account> findAllAccounts() {
-        return this.operations.findAll(Account.class);
+    public List<DropletUser> findAllAccounts() {
+        return this.operations.findAll(DropletUser.class);
     }
 
 }

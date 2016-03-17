@@ -1,12 +1,14 @@
 package com.pardasani.digital.controller;
 
 import com.pardasani.digital.business.DocumentManagementService;
-import com.pardasani.digital.dto.DocumentMetaData;
+import com.pardasani.digital.dto.APIOptions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.net.URL;
 
 /**
  * Created by pankajpardasani on 12/03/2016.
@@ -25,12 +27,12 @@ public class DocumentManagementController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/create")
     public String createNewDocument(@RequestParam("file") MultipartFile uploadedDocument, ModelAndView modelAndView) {
-        Object documentId = dms.addNewDocument(uploadedDocument);
+        APIOptions options = new APIOptions.APIOptionsBuilder().withMultipartFile(uploadedDocument)
+                .withUserEmail("pankaj.d.p@gmail.com") //TODO: pass the user details from UI like ID in encrypted formet
+                .build();
 
-        DocumentMetaData documentMetaData = new DocumentMetaData();
-        documentMetaData.setDocumentId(documentId);
-
-        modelAndView.addObject("uploadedDocument", documentMetaData);
+        URL documentRerefenceURL = dms.addNewDocument(options);
+        modelAndView.addObject("uploadedDocument", documentRerefenceURL.toString());
 
         return "/dropContent";
     }

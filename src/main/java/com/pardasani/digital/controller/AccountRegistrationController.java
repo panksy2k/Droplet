@@ -1,7 +1,7 @@
 package com.pardasani.digital.controller;
 
 import com.pardasani.digital.business.AccountService;
-import com.pardasani.digital.domain.Account;
+import com.pardasani.digital.domain.DropletUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.List;
 
 /**
  * Created by pankajpardasani on 17/02/2016.
@@ -30,29 +29,29 @@ public class AccountRegistrationController {
 
     @RequestMapping(value = "/registration/form", method = RequestMethod.GET)
     public String initRegistrationForm(Model model) {
-        model.addAttribute("ddUser", new Account());
+        model.addAttribute("ddUser", new DropletUser());
         return "/registration";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String doAccountRegistration(HttpServletRequest request,
-                                      @Valid @ModelAttribute Account userAccount,
+                                      @Valid @ModelAttribute DropletUser dropletUser,
                                       BindingResult bindingResult,
                                       Model model) {
         if(bindingResult.hasErrors()) {
-            model.addAttribute("ddUser", userAccount);
+            model.addAttribute("ddUser", dropletUser);
             logger.info("Error occurred whilst saving details");
             return "/registration";
         }
         else {
-            accountService.registerUserAccountDetails(userAccount);
+            accountService.registerUserAccountDetails(dropletUser);
             return "redirect:/home";
         }
     }
 
     @RequestMapping(value = "/register/amend", method = RequestMethod.POST)
-    public void changeAccountRegistration(@Valid Account userAccount) {
-        accountService.changeAccountRegistrationDetails(userAccount);
+    public void changeAccountRegistration(@Valid DropletUser userDropletUser) {
+        accountService.changeAccountRegistrationDetails(userDropletUser);
     }
 
 }

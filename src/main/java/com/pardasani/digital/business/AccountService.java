@@ -1,6 +1,6 @@
 package com.pardasani.digital.business;
 
-import com.pardasani.digital.domain.Account;
+import com.pardasani.digital.domain.DropletUser;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service(value = "accountService")
 public interface AccountService {
-    Integer registerUserAccountDetails(Account account);
-    Account changeAccountRegistrationDetails(Account oldAccount);
-    List<Account> findAllAccounts();
+    Integer registerUserAccountDetails(DropletUser dropletUser);
+    DropletUser changeAccountRegistrationDetails(DropletUser oldDropletUser);
+    List<DropletUser> findAllAccounts();
 }
